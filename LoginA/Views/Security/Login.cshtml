@@ -1,0 +1,48 @@
+﻿<!--Modele erişebilinmesi için tanımlanan model yolu-->
+@model LoginA.Models.tblAdmin
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div align="center">
+        <!--Post işlemi yapılıyor ve nesnelerdeki verileri controller tarafına 
+            belrtilen metode gönderiyor-->
+        @using (Html.BeginForm("Login", "security", FormMethod.Post))
+        {
+            <br />
+            <div>
+                @Html.EditorFor(ad => ad.eposta, new
+           {htmlAttributes = new {
+               @placeholder = "Kullanıcı Adı....",
+               @type = "email",
+               @id = "exampleInputEmail",
+           } })
+            </div>
+            <br />
+            <div>
+                @Html.EditorFor(ad => ad.parola, new
+           {htmlAttributes = new {
+               @placeholder = "Parola",
+               @type = "password",
+               @id = "exampleInputPassword"
+           } })
+            </div>
+            <br />
+            <button type="submit">Giriş</button>
+        }
+        <br />
+        <div>
+            <!--Hata mesajının ekrana basılması-->
+            <p style="color:red;">@ViewBag.hata</p>
+        </div>
+    </div>
+</body>
+</html>
